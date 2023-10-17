@@ -25,7 +25,7 @@ class CreateUpdateSubscriber extends \Drip\Connect\Model\ApiCalls\Helper
         ];
 
         $this->request = $connectApiCallsRequestBaseFactory->create()
-            ->setMethod(\Zend_Http_Client::POST)
+            ->setMethod(\Laminas\Http\Request::POST)
             ->setRawData(json_encode($subscribersInfo));
     }
 }

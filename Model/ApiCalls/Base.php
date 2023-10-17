@@ -65,7 +65,7 @@ class Base extends RestapiAbstract
      * Call the API
      *
      * @param \Drip\Connect\Model\Restapi\Request $request
-     * @throws \Zend_Http_Client_Exception
+     * @throws \Laminas\Http\Exception\RuntimeException
      */
     protected function _callApi($request)
     {
@@ -89,7 +89,7 @@ class Base extends RestapiAbstract
 
     protected function _forceValidResponse($request)
     {
-        return new \Zend_Http_Response(200, ["Content-type" => "application/json; charset=utf-8"], json_encode([
+        return new \Laminas\Http\Response(200, ["Content-type" => "application/json; charset=utf-8"], json_encode([
             "Status" => "OK",
             "Message" => "Forced Valid Response"
         ]));
@@ -97,7 +97,7 @@ class Base extends RestapiAbstract
 
     protected function _forceInvalidResponse($request)
     {
-        return new \Zend_Http_Response(200, ["Content-type" => "application/json; charset=utf-8"], json_encode([
+        return new \Laminas\Http\Response(200, ["Content-type" => "application/json; charset=utf-8"], json_encode([
             "Status" => "OK",
             "Message" => "Forced Invalid Response"
         ]));
@@ -105,7 +105,7 @@ class Base extends RestapiAbstract
 
     protected function _forceError($request)
     {
-        return new \Zend_Http_Response(500, ["Content-type" => "application/json; charset=utf-8"], json_encode([
+        return new \Laminas\Http\Response(500, ["Content-type" => "application/json; charset=utf-8"], json_encode([
             "Status" => "Error",
             "Message" => "Forced Error Message"
         ]));

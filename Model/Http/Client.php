@@ -5,7 +5,7 @@ namespace Drip\Connect\Model\Http;
 /**
  * Rest client
  */
-class Client extends \Zend_Http_Client
+class Client extends \Laminas\Http\Request
 {
     /** @var \Monolog\Logger */
     protected $logger;
@@ -28,8 +28,8 @@ class Client extends \Zend_Http_Client
      * Send the HTTP request and return an HTTP response object
      *
      * @param string $method
-     * @return \Zend_Http_Response
-     * @throws \Zend_Http_Client_Exception
+     * @return \Laminas\Http\Response
+     * @throws \Laminas\Http\Exception\RuntimeException
      */
     public function request($method = null)
     {

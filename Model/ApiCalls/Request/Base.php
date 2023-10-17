@@ -13,7 +13,7 @@ class Base implements \Drip\Connect\Model\Restapi\Request\RequestInterface
 
     protected $rawData = '';
 
-    protected $method = \Zend_Http_Client::GET;
+    protected $method = \Laminas\Http\Request::GET;
 
     /**
      * @param array $param

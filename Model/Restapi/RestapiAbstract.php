@@ -9,7 +9,7 @@ abstract class RestapiAbstract
     /** @var string */
     protected $_responseModel;
 
-    /** @var \Zend_Http_Client */
+    /** @var \Laminas\Http\Request */
     protected $_httpClient;
 
     /** @var string */
@@ -18,7 +18,7 @@ abstract class RestapiAbstract
     /** @var string */
     protected $_lastRequest;
 
-    /** @var \Zend_Http_Response */
+    /** @var \Laminas\Http\Response */
     protected $_lastResponse;
 
     /** @var \Drip\Connect\Logger\Logger */
@@ -98,7 +98,7 @@ abstract class RestapiAbstract
     }
 
     /**
-     * @return \Zend_Http_Response
+     * @return \Laminas\Http\Response
      */
     public function getLastResponse()
     {
@@ -117,7 +117,7 @@ abstract class RestapiAbstract
      * Call the API
      *
      * @param $request
-     * @throws \Zend_Http_Client_Exception
+     * @throws \Laminas\Http\Exception\RuntimeException
      */
     abstract protected function _callApi($request);
 
@@ -125,7 +125,7 @@ abstract class RestapiAbstract
      * Force a valid response
      *
      * @param $request
-     * @throws \Zend_Http_Client_Exception
+     * @throws \Laminas\Http\Exception\RuntimeException
      */
     abstract protected function _forceValidResponse($request);
 
@@ -133,7 +133,7 @@ abstract class RestapiAbstract
      * Force an invalid response
      *
      * @param $request
-     * @throws \Zend_Http_Client_Exception
+     * @throws \Laminas\Http\Exception\RuntimeException
      */
     abstract protected function _forceInvalidResponse($request);
 
@@ -141,7 +141,7 @@ abstract class RestapiAbstract
      * Force an error
      *
      * @param $request
-     * @throws \Zend_Http_Client_Exception
+     * @throws \Laminas\Http\Exception\RuntimeException
      */
     abstract protected function _forceError($request);
 
@@ -149,7 +149,7 @@ abstract class RestapiAbstract
      * Force a timeout
      *
      * @param $request
-     * @throws \Zend_Http_Client_Exception
+     * @throws \Laminas\Http\Exception\RuntimeException
      */
     protected function _forceTimeout($request)
     {
@@ -163,13 +163,13 @@ abstract class RestapiAbstract
      * This is a malformed or unexpected response from the API.
      *
      * @param $request
-     * @return \Zend_Http_Response
+     * @return \Laminas\Http\Response
      */
     protected function _forceUnknownResponse($request)
     {
         $httpStatusCode = 200;
         $headers = [];
         $responseBody = "This is an unknown response.";
-        return new \Zend_Http_Response($httpStatusCode, $headers, $responseBody);
+        return new \Laminas\Http\Response($httpStatusCode, $headers, $responseBody);
     }
 }

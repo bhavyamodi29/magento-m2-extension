@@ -30,7 +30,7 @@ class GetSubscriberList extends \Drip\Connect\Model\ApiCalls\Helper
         ]);
 
         $this->request = $connectApiCallsRequestBaseFactory->create()
-            ->setMethod(\Zend_Http_Client::GET)
+            ->setMethod(\Laminas\Http\Request::GET)
             ->setParametersGet([
                 'status' => $data['status'],
                 'tags' => $data['tags'],
